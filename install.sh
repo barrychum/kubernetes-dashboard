@@ -2,10 +2,6 @@
 kubectl apply -f dashboard-install.yaml
  
 kubectl -n kubernetes-dashboard patch service kubernetes-dashboard -p '{"spec":{"type":"NodePort"}}'
-  or
-kubectl -n kubernetes-dashboard edit service kubernetes-dashboard
-  or
-kubectl proxy --address='0.0.0.0' --accept-hosts='^*$'
 
 kubectl get svc --all-namespaces
 
