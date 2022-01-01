@@ -10,7 +10,7 @@ added token-ttl to the above install yaml
 Install dashboard 
 kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.4.0/aio/deploy/recommended.yaml
  
-patch service to expose
+patch service to expose  
 kubectl -n kubernetes-dashboard patch service kubernetes-dashboard -p '{"spec":{"type":"NodePort"}}'
   or
 kubectl -n kubernetes-dashboard edit service kubernetes-dashboard
