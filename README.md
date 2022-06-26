@@ -24,10 +24,13 @@ Create admin user
 `kubectl apply -f admin-user.yaml` 
 
 Create admin role binding  
-`kubectl apply -f bind.yaml` 
+`kubectl apply -f ClusterRoleBinding.yaml` 
 
-Get the admin-user token to login  
+Get the admin-user token to login  (only works before kubernetes v1.24)
 `kubectl -n kubernetes-dashboard get secret $(kubectl -n kubernetes-dashboard get sa/admin-user -o jsonpath="{.secrets[0].name}") -o go-template="{{.data.token | base64decode}}"`
+
+From k8s v1.24, you need to create a token manually
+`kubectl -n kubernetes-dashboard create token admin-user`
 
 Delete admin user and role binding if needed  
 `kubectl -n kubernetes-dashboard delete serviceaccount admin-user`  
